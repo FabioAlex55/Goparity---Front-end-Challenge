@@ -1,6 +1,5 @@
 <template>
   <h1>{{ title }}</h1>
-  <button @click="handleClick"> Random!</button>
   <NewPokemonVue/>
 </template>
 
@@ -12,14 +11,9 @@ export default{
   components: {NewPokemonVue},
   data(){
     return{
-      title: "Womp womp "
+      title: "New Pokemon! "
     }
   },
-  methods: {
-    handleClick(){
-
-    }
-  }
 }
 </script>
 
@@ -28,6 +22,6 @@ export default{
 
 body{
  display: inline-block;
- background: orange;
+ background: rgb(31, 144, 148);
 }
 </style>
