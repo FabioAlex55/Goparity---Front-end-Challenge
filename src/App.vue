@@ -11,7 +11,7 @@ export default{
   components: {NewPokemonVue},
   data(){
     return{
-      title: "New Pokemon! "
+      title: "Random Pokemon Generator! "
     }
   },
 }
@@ -19,9 +19,19 @@ export default{
 
 
 <style>
+*{
+box-sizing: border-box;
+}
 
 body{
- display: inline-block;
- background: rgb(31, 144, 148);
+  align-items: center;
+  text-align: center;
+  font-family:system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  background: rgb(46, 45, 45);
+  color: white;
 }
 </style>
