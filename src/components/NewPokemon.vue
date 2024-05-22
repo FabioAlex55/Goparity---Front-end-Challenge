@@ -1,10 +1,14 @@
 <template>
   <button class="random" @click="handleClick"> Random!</button>
   <div class="mainDiv" v-if="pokemon !== null">
-    <h1 >{{ pokemon.id + " : " + pokemon.name}}</h1>
+    <h1 class="name" >{{ pokemon.id + " : " + pokemon.name}}</h1>
     <div class="pokemonInfo">
-      <img class="sprite" v-bind:src="pokemon.sprites.front_default" />  
-      <p class="types" :key="type.id" :style="{color: getBestContrastColor(typeColorMap[type.type.name], '#ffffff', '#000000'), background: typeColorMap[type.type.name]}" v-for="type in pokemon.types">{{ type.type.name}}</p>
+      <img class="sprite" v-bind:src="pokemon.sprites.front_default" />
+      <p class="types" v-for="pokemonType in pokemon.types" :key="pokemonType.id" :style="{color: getBestContrastColor(typeColorMap[pokemonType.type.name], '#ffffff', '#000000'),
+           background: typeColorMap[pokemonType.type.name]}"> {{ pokemonType.type.name}} </p>
+           <div class="infoTable">
+      <p class="stats" v-for="pokemonStats in pokemon.stats" :key="pokemonStats" > {{ pokemonStats.stat.name + ":" + pokemonStats.base_stat }}</p>
+      </div>  
     </div>
   </div>
   <h1 v-else> Loading Pokemon</h1>
@@ -40,7 +44,34 @@ const background = computed(()=>{
 
 </script>
 
+
 <style>
+.name{
+  text-transform: capitalize;
+
+}
+.infoTable{
+  flex-wrap: wrap;
+  flex-basis:50%;
+}
+.stats{
+  text-transform: capitalize;
+  border: 5px solid rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+
+  
+  
+}
 .pokemonInfo{
   align-items: flex-start;
   display: flex;
@@ -76,6 +107,7 @@ const background = computed(()=>{
   position: relative;
   text-align: center;
   text-decoration: none;
+  width: 100px;
 }
 
 .mainDiv{
@@ -87,7 +119,7 @@ const background = computed(()=>{
   flex-direction: column; 
 }
 .sprite{
-  width:300px ;
+  width:300px;
   height:300px ;
 }
 
